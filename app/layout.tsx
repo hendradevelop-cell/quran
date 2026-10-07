@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { FiBookOpen, FiBookmark, FiCompass, FiHeart, FiNavigation, FiZap } from 'react-icons/fi';
 import Link from 'next/link';
 import BottomNavigation from './components/BottomNavigation';
+import FooterVisitorStats from './components/FooterVisitorStats';
 import PwaInstallButton from './components/PwaInstallButton';
 import ThemeModeControl from './components/ThemeModeControl';
 
@@ -127,8 +128,9 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-[#e8e4d9] bg-[#fbfaf6] px-4 pb-24 pt-6 lg:pb-6">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center text-sm text-[#748179] sm:flex-row sm:text-left">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center text-sm text-[#748179] sm:flex-row sm:text-left">
             <p>© 2026 Quran Web</p>
+            <FooterVisitorStats />
             <p>Semoga setiap ayat membawa kebaikan.</p>
             <p>
               by{' '}
