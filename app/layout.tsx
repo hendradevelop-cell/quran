@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { FiBookOpen, FiBookmark, FiCompass, FiHeart, FiZap } from 'react-icons/fi';
+import { FiBookOpen, FiBookmark, FiCompass, FiHeart, FiNavigation, FiZap } from 'react-icons/fi';
 import Link from 'next/link';
 import BottomNavigation from './components/BottomNavigation';
 import PwaInstallButton from './components/PwaInstallButton';
@@ -67,6 +67,12 @@ function HeaderComponent() {
             </li>
             <li>
               <Link href="/quran/ayat" className="rounded-full px-3 py-2 transition hover:bg-[#edf3ec] hover:text-[#124e43]">Ayat</Link>
+            </li>
+            <li>
+              <Link href="/kiblat" className="flex items-center gap-2 rounded-full px-3 py-2 transition hover:bg-[#edf3ec] hover:text-[#124e43]">
+                <FiNavigation aria-hidden="true" />
+                Kiblat
+              </Link>
             </li>
             <li>
               <Link href="/doa" className="flex items-center gap-2 rounded-full px-3 py-2 transition hover:bg-[#edf3ec] hover:text-[#124e43]">

@@ -10,6 +10,7 @@ import {
   FiCompass,
   FiHeart,
   FiMapPin,
+  FiNavigation,
   FiShare2,
   FiZap,
 } from 'react-icons/fi';
@@ -44,6 +45,16 @@ const PRAYERS: { name: PrayerName; label: string }[] = [
 ];
 
 const FEATURES = [
+  {
+    title: 'Arah kiblat',
+    description: 'Temukan arah Ka’bah dengan lokasi GPS dan kompas perangkat.',
+    icon: FiNavigation,
+    href: '/kiblat',
+    action: 'Cari arah kiblat',
+    style: 'bg-white text-[#173d35]',
+    iconStyle: 'bg-[#edf3ec] text-[#327b68]',
+    available: true,
+  },
   {
     title: 'Al-Qur’an',
     description: 'Baca surah, pahami arti, dan simpan ayat favorit.',

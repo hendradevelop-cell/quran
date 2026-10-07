@@ -30,6 +30,10 @@ Service worker menyimpan halaman beranda dan aset aplikasi agar beranda dapat di
 
 Gunakan tombol tema di bagian atas untuk memilih mode **Siang**, **Malam**, atau **Otomatis**. Mode otomatis mengikuti pengaturan tampilan perangkat; pilihan manual disimpan di browser ini.
 
+## Arah kiblat
+
+Buka halaman **Kiblat** dan izinkan lokasi presisi tinggi untuk menghitung bearing langsung ke koordinat Ka’bah. Aktifkan kompas perangkat untuk melihat arah relatif; sensor perlu izin pada browser/perangkat tertentu dan dapat terpengaruh benda logam atau magnet. Kalibrasikan ponsel, perhatikan akurasi GPS, dan cocokkan dengan mihrab masjid setempat bila memerlukan kepastian lebih tinggi.
+
 Quran Web dibuat oleh [Hendra](mailto:hendra.develop@gmail.com).
 
 ## Learn More
