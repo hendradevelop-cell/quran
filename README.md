@@ -20,6 +20,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Instal dan akses offline
+
+Quran Web dapat dipasang dari browser yang mendukung PWA melalui tombol **Instal aplikasi**. Di iPhone atau iPad, buka situs menggunakan Safari, ketuk **Bagikan**, lalu pilih **Tambahkan ke Layar Utama**. Situs perlu disajikan melalui HTTPS saat digunakan di perangkat; `localhost` tetap bisa digunakan untuk pengembangan.
+
+Service worker menyimpan halaman beranda dan aset aplikasi agar beranda dapat dibuka kembali saat offline. Fitur yang mengambil data dari internet, seperti jadwal shalat, tetap memerlukan koneksi.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

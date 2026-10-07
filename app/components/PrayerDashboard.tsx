@@ -267,8 +267,8 @@ export default function PrayerDashboard() {
   }, [locationName, schedule]);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8">
-      <section className="relative overflow-hidden rounded-[2rem] bg-[#124e43] px-6 py-8 text-white shadow-xl shadow-emerald-950/10 sm:px-10 sm:py-10">
+    <div className="mx-auto max-w-6xl space-y-6 sm:space-y-8">
+      <section className="relative overflow-hidden rounded-[1.5rem] bg-[#124e43] px-4 py-6 text-white shadow-xl shadow-emerald-950/10 sm:rounded-[2rem] sm:px-10 sm:py-10">
         <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-32 h-80 w-80 rounded-full border border-white/10 sm:h-[30rem] sm:w-[30rem]" />
         <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-20 h-64 w-64 rounded-full border border-white/10 sm:h-96 sm:w-96" />
         <div className="relative grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -283,7 +283,7 @@ export default function PrayerDashboard() {
             <p className="mt-6 text-sm capitalize text-emerald-50/70">{displayDate}</p>
           </div>
 
-          <div className="rounded-[1.75rem] border border-white/15 bg-white/[0.08] p-5 backdrop-blur-sm sm:p-6">
+          <div className="rounded-[1.5rem] border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm sm:rounded-[1.75rem] sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-sm text-emerald-50/70">Jadwal shalat hari ini</p>
@@ -385,12 +385,13 @@ export default function PrayerDashboard() {
               Ibadah, dalam genggaman.
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-[#748179]">
+          <p className="hidden max-w-sm text-sm leading-6 text-[#748179] sm:block">
             Mulai dari satu kebiasaan kecil. Ajak teman agar makin semangat.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="mb-3 text-xs font-medium text-[#748179] sm:hidden">Geser untuk menjelajahi fitur</p>
+        <div className="mobile-feature-track -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
           {FEATURES.map(({ title, description, icon: Icon, href, action, style, iconStyle, available }) => {
             const content = (
               <>
@@ -417,7 +418,7 @@ export default function PrayerDashboard() {
               <Link
                 key={title}
                 href={href}
-                className={`group rounded-[1.75rem] p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#327b68] ${style}`}
+                className={`group min-w-[84%] snap-start rounded-[1.5rem] p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#327b68] sm:min-w-0 sm:rounded-[1.75rem] sm:p-5 ${style}`}
               >
                 {content}
               </Link>
