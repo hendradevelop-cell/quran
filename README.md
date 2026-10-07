@@ -22,9 +22,15 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Instal dan akses offline
 
-Quran Web dapat dipasang dari browser yang mendukung PWA melalui tombol **Instal aplikasi**. Di iPhone atau iPad, buka situs menggunakan Safari, ketuk **Bagikan**, lalu pilih **Tambahkan ke Layar Utama**. Situs perlu disajikan melalui HTTPS saat digunakan di perangkat; `localhost` tetap bisa digunakan untuk pengembangan.
+Quran Web dapat dipasang dari browser yang mendukung PWA melalui tombol **Instal aplikasi**. Tombol otomatis disembunyikan setelah aplikasi terpasang. Di iPhone atau iPad, buka situs menggunakan Safari, ketuk **Bagikan**, lalu pilih **Tambahkan ke Layar Utama**. Situs perlu disajikan melalui HTTPS saat digunakan di perangkat; `localhost` tetap bisa digunakan untuk pengembangan.
 
 Service worker menyimpan halaman beranda dan aset aplikasi agar beranda dapat dibuka kembali saat offline. Fitur yang mengambil data dari internet, seperti jadwal shalat, tetap memerlukan koneksi.
+
+## Mode siang dan malam
+
+Gunakan tombol tema di bagian atas untuk memilih mode **Siang**, **Malam**, atau **Otomatis**. Mode otomatis mengikuti pengaturan tampilan perangkat; pilihan manual disimpan di browser ini.
+
+Quran Web dibuat oleh [Hendra](mailto:hendra.develop@gmail.com).
 
 ## Learn More
 

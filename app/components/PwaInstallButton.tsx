@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { FiDownload, FiX } from 'react-icons/fi';
 
 type InstallPromptEvent = Event & {
@@ -8,18 +8,59 @@ type InstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
 };
 
+const INSTALLED_STORAGE_KEY = 'quran-web-installed';
+
+function isAppInstalled() {
+  if (
+    window.matchMedia('(display-mode: standalone)').matches
+    || Boolean((navigator as Navigator & { standalone?: boolean }).standalone)
+  ) {
+    return true;
+  }
+
+  try {
+    return window.localStorage.getItem(INSTALLED_STORAGE_KEY) === 'true';
+  } catch (error) {
+    console.error('Gagal membaca status instalasi aplikasi:', error);
+    return false;
+  }
+}
+
+function subscribeToInstallState(onChange: () => void) {
+  const displayMode = window.matchMedia('(display-mode: standalone)');
+  window.addEventListener('appinstalled', onChange);
+  window.addEventListener('storage', onChange);
+  displayMode.addEventListener('change', onChange);
+
+  return () => {
+    window.removeEventListener('appinstalled', onChange);
+    window.removeEventListener('storage', onChange);
+    displayMode.removeEventListener('change', onChange);
+  };
+}
+
 export default function PwaInstallButton() {
   const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
   const [message, setMessage] = useState('');
+  const [installing, setInstalling] = useState(false);
+  const isInstalled = useSyncExternalStore(subscribeToInstallState, isAppInstalled, () => false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
+      if (isAppInstalled()) return;
       event.preventDefault();
+      setInstalling(false);
       setInstallPrompt(event as InstallPromptEvent);
     };
     const handleAppInstalled = () => {
       setInstallPrompt(null);
-      setMessage('Quran Web berhasil ditambahkan ke perangkat.');
+      setInstalling(true);
+      setMessage('');
+      try {
+        window.localStorage.setItem(INSTALLED_STORAGE_KEY, 'true');
+      } catch (error) {
+        console.error('Gagal menyimpan status instalasi aplikasi:', error);
+      }
     };
     const registerServiceWorker = () => {
       navigator.serviceWorker.register('/sw.js').catch((error: unknown) => {
@@ -57,15 +98,25 @@ export default function PwaInstallButton() {
     try {
       await installPrompt.prompt();
       const choice = await installPrompt.userChoice;
-      setMessage(choice.outcome === 'accepted'
-        ? 'Quran Web sedang ditambahkan ke perangkat.'
-        : 'Instalasi dibatalkan. Kamu bisa memasangnya kapan saja dari menu browser.');
       setInstallPrompt(null);
+      if (choice.outcome === 'accepted') {
+        setInstalling(true);
+        setMessage('');
+        try {
+          window.localStorage.setItem(INSTALLED_STORAGE_KEY, 'true');
+        } catch (error) {
+          console.error('Gagal menyimpan status instalasi aplikasi:', error);
+        }
+      } else {
+        setMessage('Instalasi dibatalkan. Kamu bisa memasangnya kapan saja dari menu browser.');
+      }
     } catch (error) {
       console.error('Gagal memulai instalasi aplikasi:', error);
       setMessage('Instalasi belum dapat dimulai. Coba gunakan menu browser.');
     }
   };
+
+  if (isInstalled || installing) return null;
 
   return (
     <div className="relative shrink-0">

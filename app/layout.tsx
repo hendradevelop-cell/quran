@@ -4,6 +4,20 @@ import { FiBookOpen, FiBookmark, FiCompass, FiHeart, FiZap } from 'react-icons/f
 import Link from 'next/link';
 import BottomNavigation from './components/BottomNavigation';
 import PwaInstallButton from './components/PwaInstallButton';
+import ThemeModeControl from './components/ThemeModeControl';
+
+const themeInitScript = `
+  try {
+    const preference = localStorage.getItem('quran-web-theme');
+    const theme = preference === 'light' || preference === 'dark'
+      ? preference
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch (error) {
+    console.error('Gagal menerapkan preferensi tema:', error);
+  }
+`;
 
 export const metadata: Metadata = {
   title: 'Quran Web — Teman Ibadah Harian',
@@ -80,7 +94,10 @@ function HeaderComponent() {
             </li>
           </ul>
         </nav>
-        <PwaInstallButton />
+        <div className="flex shrink-0 items-center gap-2">
+          <ThemeModeControl />
+          <PwaInstallButton />
+        </div>
       </div>
     </header>
   );
@@ -92,7 +109,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <HeaderComponent />
 
@@ -104,6 +124,12 @@ export default function RootLayout({
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 text-center text-sm text-[#748179] sm:flex-row sm:text-left">
             <p>© 2026 Quran Web</p>
             <p>Semoga setiap ayat membawa kebaikan.</p>
+            <p>
+              by{' '}
+              <a className="font-semibold text-[#327b68] underline-offset-4 hover:underline" href="mailto:hendra.develop@gmail.com">
+                Hendra
+              </a>
+            </p>
           </div>
         </footer>
         <BottomNavigation />

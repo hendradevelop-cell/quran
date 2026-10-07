@@ -3,7 +3,29 @@
 :root {
   --background: #f7f6f1;
   --foreground: #173d35;
+  --surface: #ffffff;
+  --surface-muted: #fbfaf6;
+  --surface-green: #edf3ec;
+  --surface-gold: #fff4dc;
+  --surface-warm: #fffaf0;
+  --surface-rose: #fff0e9;
+  --border: #e8e4d9;
+  --muted: #748179;
   color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --background: #111a17;
+  --foreground: #edf3ee;
+  --surface: #1b2722;
+  --surface-muted: #18221e;
+  --surface-green: #22372e;
+  --surface-gold: #38311f;
+  --surface-warm: #2c2a22;
+  --surface-rose: #392a28;
+  --border: #35433c;
+  --muted: #a8b6ae;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -18,6 +40,99 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+:root[data-theme='dark'] [class~='bg-white'],
+:root[data-theme='dark'] [class~='bg-[#f7f6f1]'] {
+  background-color: var(--surface) !important;
+}
+
+:root[data-theme='dark'] [class~='bg-[#fbfaf6]'],
+:root[data-theme='dark'] [class~='bg-[#fbfaf6]/95'] {
+  background-color: var(--surface-muted) !important;
+}
+
+:root[data-theme='dark'] [class~='bg-[#edf3ec]'],
+:root[data-theme='dark'] [class~='bg-[#edf0e8]'],
+:root[data-theme='dark'] [class~='bg-[#edf5ee]'],
+:root[data-theme='dark'] [class~='bg-[#f2f7f1]'],
+:root[data-theme='dark'] [class~='bg-[#f3f7f1]'],
+:root[data-theme='dark'] [class~='bg-[#f5f8f3]'] {
+  background-color: var(--surface-green) !important;
+}
+
+:root[data-theme='dark'] [class~='bg-[#fff4dc]'],
+:root[data-theme='dark'] [class~='bg-[#f7f3e8]'],
+:root[data-theme='dark'] [class~='bg-[#e7e9df]'] {
+  background-color: var(--surface-gold) !important;
+}
+
+:root[data-theme='dark'] [class~='bg-[#fffaf0]'],
+:root[data-theme='dark'] [class~='bg-[#fff4e9]'] {
+  background-color: var(--surface-warm) !important;
+}
+
+:root[data-theme='dark'] [class~='bg-[#fff0e9]'],
+:root[data-theme='dark'] [class~='bg-[#fff3ef]'] {
+  background-color: var(--surface-rose) !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#173d35]'],
+:root[data-theme='dark'] [class~='text-[#124e43]'],
+:root[data-theme='dark'] [class~='text-[#1f624f]'],
+:root[data-theme='dark'] [class~='text-[#276553]'],
+:root[data-theme='dark'] [class~='text-[#327b68]'] {
+  color: #b6dfca !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#173d35]'][class~='bg-[#f1d99b]'],
+:root[data-theme='dark'] [class~='text-[#173d35]'] [class~='bg-[#f1d99b]'] {
+  color: #173d35 !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#52675f]'],
+:root[data-theme='dark'] [class~='text-[#527067]'],
+:root[data-theme='dark'] [class~='text-[#668077]'],
+:root[data-theme='dark'] [class~='text-[#68766f]'],
+:root[data-theme='dark'] [class~='text-[#748179]'],
+:root[data-theme='dark'] [class~='text-[#7b8981]'],
+:root[data-theme='dark'] [class~='text-[#91a098]'] {
+  color: var(--muted) !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#8c764a]'],
+:root[data-theme='dark'] [class~='text-[#a77b2e]'],
+:root[data-theme='dark'] [class~='text-[#b6812e]'],
+:root[data-theme='dark'] [class~='text-[#76694c]'],
+:root[data-theme='dark'] [class~='text-[#857756]'] {
+  color: #e5c984 !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#6e5b32]'],
+:root[data-theme='dark'] [class~='text-[#81572c]'] {
+  color: #e5cb91 !important;
+}
+
+:root[data-theme='dark'] [class~='text-[#8e4939]'],
+:root[data-theme='dark'] [class~='text-[#9b5b4b]'],
+:root[data-theme='dark'] [class~='text-[#b66e54]'] {
+  color: #e6a28d !important;
+}
+
+:root[data-theme='dark'] [class~='border-[#e8e4d9]'],
+:root[data-theme='dark'] [class~='border-[#e6e2d7]'],
+:root[data-theme='dark'] [class~='border-[#e9dfc4]'],
+:root[data-theme='dark'] [class~='border-[#eeeae1]'],
+:root[data-theme='dark'] [class~='border-[#d5d8ca]'],
+:root[data-theme='dark'] [class~='border-[#d9dfd5]'],
+:root[data-theme='dark'] [class~='border-[#d9e6da]'],
+:root[data-theme='dark'] [class~='border-[#dce8dd]'] {
+  border-color: var(--border) !important;
+}
+
+.mobile-bottom-nav {
+  border-color: var(--border);
+  background-color: color-mix(in srgb, var(--surface-muted) 95%, transparent);
 }
 
 .mobile-bottom-nav {
